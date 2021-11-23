@@ -1,6 +1,5 @@
 package UILayer;
 
-import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 import java.util.Date;
@@ -229,20 +228,18 @@ public class ChatFrame extends JFrame {
 		JPanel southPanel = new JPanel();
 		sendArea = new JTextField(20);
 		sendButton = new JButton("Send");
-		sendButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ev){
-				try {
-					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-					String IDandTime = user.getName()+ "    " + dateFormat.format(new Date());
-					writer.println(IDandTime);
-					writer.println(sendArea.getText());
-					writer.flush();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				sendArea.setText("");
-				sendArea.requestFocus();
+		sendButton.addActionListener(ev -> {
+			try {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				String IDandTime = user.getName()+ "    " + dateFormat.format(new Date());
+				writer.println(IDandTime);
+				writer.println(sendArea.getText());
+				writer.flush();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
+			sendArea.setText("");
+			sendArea.requestFocus();
 		});
 		southPanel.add(sendArea);
 		southPanel.add(sendButton);

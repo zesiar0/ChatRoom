@@ -1,7 +1,6 @@
 package BLLayer;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import DALayer.UsersDA;
 

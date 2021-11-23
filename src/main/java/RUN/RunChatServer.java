@@ -22,7 +22,7 @@ public class RunChatServer {
 	
 	@SuppressWarnings("resource")
 	public void go(){
-		clientOutputStream = new ArrayList<PrintWriter>();
+		clientOutputStream = new ArrayList<>();
 		try {
 			ServerSocket serverSocket = new ServerSocket(50000);
 			while (true) {

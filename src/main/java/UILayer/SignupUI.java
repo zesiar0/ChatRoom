@@ -59,12 +59,12 @@ public class SignupUI extends JPanel {
                 int isSuccess =  new UsersBL().signUp(u);
                 if (isSuccess == 2) {
                 	ok = true;
-                    JOptionPane.showMessageDialog(null, "Signup successfully��");
+                    JOptionPane.showMessageDialog(null, "Signup successfully!");
                     dialog.setVisible(false);
 				}else
 					if (isSuccess == 1) {
 						 ok = false;
-		                 JOptionPane.showMessageDialog(SignupUI.this,"Username has been used��please try again��","Signup Failed",JOptionPane.ERROR_MESSAGE);
+		                 JOptionPane.showMessageDialog(SignupUI.this,"Username has been used!please try again!","Signup Failed",JOptionPane.ERROR_MESSAGE);
 		                 dialog.setVisible(true);
 					}
 					else {
@@ -74,11 +74,7 @@ public class SignupUI extends JPanel {
             }
         });
         JButton cancelButton = new JButton("Cancel");
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                dialog.setVisible(false);
-            }
-        });
+        cancelButton.addActionListener(event -> dialog.setVisible(false));
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(okButton);
