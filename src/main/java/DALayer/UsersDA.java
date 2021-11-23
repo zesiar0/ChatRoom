@@ -61,44 +61,29 @@ public class UsersDA {
 //        return user;
 //    }
 
-    public void offline(int id) throws IOException, ClassNotFoundException {
+    public void offline(int id, String user) throws IOException, ClassNotFoundException {
+        update(id, 0, user);
+    }
+
+	public void online(int id, String user) throws IOException, ClassNotFoundException {
+        update(id, 1, user);
+    }
+
+    public void hide(int id, String user) throws IOException, ClassNotFoundException {
+        update(id, 2, user);
+    }
+
+    public void update(int newId, int oldId, String username) throws IOException, ClassNotFoundException {
         File f = DBConnect.getConnection();
         for (File file : Objects.requireNonNull(f.listFiles())) {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
             UsersEntity user = (UsersEntity) in.readObject();
 
-            if (user.getID() == 0) {
-                user.setID(id);
+            if (user.getID() == oldId && Objects.equals(user.getName(), username)) {
+                user.setID(newId);
             }
             break;
         }
     }
-
-	public void online(int id) throws IOException, ClassNotFoundException {
-        File f = DBConnect.getConnection();
-        for (File file : Objects.requireNonNull(f.listFiles())) {
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-            UsersEntity user = (UsersEntity) in.readObject();
-
-            if (user.getID() == 1) {
-                user.setID(id);
-            }
-            break;
-        }
-    }
-
-    public void hide(int id) throws IOException, ClassNotFoundException {
-        File f = DBConnect.getConnection();
-        for (File file : Objects.requireNonNull(f.listFiles())) {
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-            UsersEntity user = (UsersEntity) in.readObject();
-
-            if (user.getID() == 2) {
-                user.setID(id);
-            }
-            break;
-        }
-    }
-	
 	
 }

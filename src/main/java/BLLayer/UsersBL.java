@@ -41,23 +41,23 @@ public class UsersBL {
 		}
 		return isSuccess;
 	}
-	public void setOffline(int id) {
+	public void setOffline(int id, String user) {
 		try {
-			new UsersDA().offline(id);
+			new UsersDA().offline(id, user);
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-	public void setOnline(int id) {
+	public void setOnline(int id, String user) {
 		try {
-			new UsersDA().online(id);
+			new UsersDA().online(id, user);
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
-	public void setHide(int id) {
+	public void setHide(int id, String user) {
 		try {
-			new UsersDA().hide(id);
+			new UsersDA().hide(id, user);
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}

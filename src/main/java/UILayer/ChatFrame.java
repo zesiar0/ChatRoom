@@ -70,7 +70,7 @@ public class ChatFrame extends JFrame {
 				statusCombo.setEnabled(true);
 				sendButton.setEnabled(true);
 				user.setStatus(1);
-				new UsersBL().setOnline(user.getID());
+				new UsersBL().setOnline(user.getID(), user.getName());
 				statusCombo.setSelectedIndex(1);
 				
 			}
@@ -95,7 +95,7 @@ public class ChatFrame extends JFrame {
 			sendButton.setEnabled(false); 
 			tellServerOffline();
 			user.setStatus(0);
-			new UsersBL().setOffline(user.getID());
+			new UsersBL().setOffline(user.getID(), user.getName());
 			user = null;
 			readerThread.stop();
 			try {
@@ -192,15 +192,15 @@ public class ChatFrame extends JFrame {
 			if (s == 0) {
 				tellServerOffline();
 				user.setStatus(0);
-				new UsersBL().setOffline(user.getID());
+				new UsersBL().setOffline(user.getID(), user.getName());
 			} else if (s == 1) {
-				new UsersBL().setOnline(user.getID());
+				new UsersBL().setOnline(user.getID(), user.getName());
 				tellServerOnline();
 				user.setStatus(1);
 			} else {
 				tellServerOffline();
 				user.setStatus(2);
-				new UsersBL().setHide(user.getID());
+				new UsersBL().setHide(user.getID(), user.getName());
 
 			}
 		});
