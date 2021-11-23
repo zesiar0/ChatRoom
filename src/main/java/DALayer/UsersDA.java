@@ -44,23 +44,6 @@ public class UsersDA {
         return user;
     }
 
-//    public UsersEntity findById(int id) throws SQLException {
-//        Connection conn = DBConnect.getConnection();
-//        Statement state = conn.createStatement();
-//        ResultSet rs = state.executeQuery(
-//                "SELECT id,name,password,sex,status FROM users u WHERE u.id="+id);
-//        UsersEntity user = null;
-//        if (rs.next()) {
-//            user = new UsersEntity();
-//            user.setID(rs.getInt("id"));
-//            user.setName(rs.getString("name"));
-//            user.setPassword(rs.getString("password"));
-//            user.setSex(rs.getString("sex"));
-//            user.setStatus(rs.getInt("status"));
-//        }
-//        return user;
-//    }
-
     public void offline(int id, String user) throws IOException, ClassNotFoundException {
         update(id, 0, user);
     }
