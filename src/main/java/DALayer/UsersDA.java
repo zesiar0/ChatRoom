@@ -60,6 +60,8 @@ public class UsersDA {
 
             if (user.getID() == oldId && Objects.equals(user.getName(), username)) {
                 user.setID(newId);
+		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+		out.writeObject(user);
             }
             break;
         }
